@@ -85,13 +85,14 @@ class Server:
 
         start, end = index_range(page, page_size)
         start, end = start + 1, end + 1
-        result = []
+        result = self.get_page(page, page_size)
+        count = 0
 
         with open("Popular_Baby_Names.csv", "r") as f:
             file = csv.reader(f)
 
             for line in file:
-                result.append(line)
+                count += 1
 
         if (end + page_size) > len(result) - 1:
             next_page = None
@@ -103,19 +104,19 @@ class Server:
         else:
             prev_page = page - 1
 
-        total_pages = (len(result) - 1) // page_size
-        if (len(result) - 1) % page_size != 0:
+        total_pages = (count - 1) // page_size
+        if (count - 1) % page_size != 0:
             total_pages += 1
 
         return {
             "page_size": page_size,
             "page": page,
-            "data": self.get_page(page, page_size),
+            "data": result,
             "next_page": next_page,
             "prev_page": prev_page,
             "total_pages": total_pages
         }
 
 
-server = Server()
-print(server.get_hyper(3000, 100))
+# server = Server()
+# print(server.get_hyper(3000, 100))
