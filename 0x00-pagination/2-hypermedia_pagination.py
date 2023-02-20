@@ -98,14 +98,14 @@ class Server:
         else:
             next_page = page + 1
 
-        if page == 0:
-            prev_page = None
-        else:
-            prev_page = page - 1
-
         total_pages = (len(result) - 1) // page_size
         if (len(result) - 1) % page_size != 0:
             total_pages += 1
+
+        if page == 0 or (page - 1) > total_pages:
+            prev_page = None
+        else:
+            prev_page = page - 1
 
         return {
             "page_size": page_size,
@@ -115,3 +115,7 @@ class Server:
             "prev_page": prev_page,
             "total_pages": total_pages
         }
+
+
+server = Server()
+print(server.get_hyper(3000, 100))
