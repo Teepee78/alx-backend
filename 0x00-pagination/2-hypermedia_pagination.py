@@ -118,5 +118,5 @@ class Server:
         }
 
 
-# server = Server()
-# print(server.get_hyper(3000, 100))
+server = Server()
+print(server.get_hyper(3000, 100))
