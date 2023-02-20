@@ -108,6 +108,9 @@ class Server:
         if (count - 1) % page_size != 0:
             total_pages += 1
 
+        if page_size > len(result):
+            page_size = len(result)
+
         return {
             "page_size": page_size,
             "page": page,
@@ -116,7 +119,3 @@ class Server:
             "prev_page": prev_page,
             "total_pages": total_pages
         }
-
-
-server = Server()
-print(server.get_hyper(3000, 100))
