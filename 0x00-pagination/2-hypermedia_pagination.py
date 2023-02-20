@@ -94,7 +94,7 @@ class Server:
             for line in file:
                 count += 1
 
-        if (end + page_size) > len(result) - 1:
+        if (end + page_size) > count - 1:
             next_page = None
         else:
             next_page = page + 1
@@ -119,3 +119,14 @@ class Server:
             "prev_page": prev_page,
             "total_pages": total_pages
         }
+
+
+server = Server()
+
+print(server.get_hyper(1, 2))
+print("---")
+print(server.get_hyper(2, 2))
+print("---")
+print(server.get_hyper(100, 3))
+print("---")
+print(server.get_hyper(3000, 100))
