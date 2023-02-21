@@ -4,6 +4,8 @@ from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
+    """LIFOCache class"""
+
     def __init__(self):
         """Init method"""
         super().__init__()

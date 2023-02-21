@@ -4,6 +4,8 @@ from base_caching import BaseCaching
 
 
 class MRUCache(BaseCaching):
+    """MRUCache class"""
+
     def __init__(self):
         """Init method"""
         super().__init__()
