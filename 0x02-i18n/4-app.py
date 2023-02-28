@@ -20,6 +20,9 @@ babel = Babel(app)
 def get_locale():
     """Gets the user's default locale"""
 
+    loc = request.args.get('locale')
+    if loc and loc in app.config['LANGUAGES']:
+        return loc
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
@@ -30,7 +33,7 @@ def get_locale():
 def index() -> str:
     """Entry point for flask application"""
 
-    return render_template('3-index.html')
+    return render_template('4-index.html')
 
 
 if __name__ == '__main__':
