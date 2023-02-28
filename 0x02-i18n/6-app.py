@@ -59,6 +59,7 @@ def get_user() -> Union[Dict, None]:
         return None
     return users.get(int(id))
 
+
 @app.before_request
 def before_request() -> None:
     """

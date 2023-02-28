@@ -68,7 +68,10 @@ def get_timezone():
     return timezone(app.config['BABEL_DEFAULT_TIMEZONE'])
 
 
-# babel.init_app(app, locale_selector=get_locale, timezone_selector=get_timezone)
+# babel.init_app(
+#     app, locale_selector=get_locale,
+#     timezone_selector=get_timezone
+# )
 
 
 def get_user() -> Union[Dict, None]:
@@ -82,6 +85,7 @@ def get_user() -> Union[Dict, None]:
     if id is None:
         return None
     return users.get(int(id))
+
 
 @app.before_request
 def before_request() -> None:
